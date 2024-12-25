@@ -15,14 +15,7 @@ function showResponse($result, $message)
 
 function sendResponse($result, $message)
 {
-    
-    // $transformedResult = [
-    //     'id' => $result['id'],
-    //     'priority' => $result['priority'],
-    //     'categoryName' => isset($result['catagory_name']),
-    //     'categoryImageUrl' => isset($result['catagory_url']),
-    // ];  
-
+   
     $response = [
         'success' => true,
         'data'    => $result,

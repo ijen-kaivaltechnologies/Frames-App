@@ -19,8 +19,9 @@ Route::controller(CatagoryController::class)->group(function(){
 
 Route::controller(FramesController::class)->group(function(){
     Route::post('add_frame', 'addFrame');
-    Route::post('show_frame', 'showAllCatagory');
-    Route::post('edit_frame/{id}', 'editCatagory');
-    Route::post('delete_frme/{id}', 'delete_catagory');
+    Route::post('show_frames', 'showFrameCatagory');    
+    Route::post('edit_frame/{id}', 'editCatagory');    
+    Route::post('edit_frme/{id}', 'editFrame');
+    Route::post('delete_frme/{id}', 'deleteFrame');
 });
 

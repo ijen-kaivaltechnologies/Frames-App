@@ -17,5 +17,8 @@ class Frames extends Model
    {
       return $this->belongsTo(Catagory::class, 'catagory_id');
    }
-
+   protected $casts = [
+      'is_popular' => 'boolean',
+      'is_premium' => 'boolean',
+  ];
 }

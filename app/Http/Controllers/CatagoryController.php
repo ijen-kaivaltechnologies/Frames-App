@@ -11,10 +11,9 @@ class CatagoryController extends Controller
 {
     public function addCatagory(Request $request)
     {
-        dd($request->all());
         $validator = Validator::make($request->all(),[
             'priority' => 'required',
-            'catagory_name' => 'required',
+            'catagory_name' => 'required',          
             'catagory_url' => 'required|mimes:jpeg,png,jpg,gif', 
         ]);
 
