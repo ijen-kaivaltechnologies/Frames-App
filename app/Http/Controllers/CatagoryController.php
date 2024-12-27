@@ -12,9 +12,9 @@ class CatagoryController extends Controller
     public function addCatagory(Request $request)
     {
         $validator = Validator::make($request->all(),[
-            'priority' => 'required',
-            'catagory_name' => 'required',          
-            'catagory_url' => 'required|mimes:jpeg,png,jpg,gif', 
+            'priority' => 'required|numeric',
+            'categoryName' => 'required',          
+            'categoryImageUrl' => 'required', 
         ]);
 
         if($validator->fails()){
@@ -22,14 +22,14 @@ class CatagoryController extends Controller
         }
 
         $data = $request->all();
-        if($image = $request->file('catagory_url'))
-        {
-            $destionation = "Catagory/image";
-            $fileName = date('YmdHis').'.'.$image->getClientOriginalName();
-            $image->storeAs($destionation, $fileName);
-            $catagoryurl = Storage::url($image); 
-            $data['catagory_url'] = "$catagoryurl";
-        }
+        // if($image = $request->file('categoryImageUrl'))
+        // {
+        //     $destionation = "Catagory/image";
+        //     $fileName = date('YmdHis').'.'.$image->getClientOriginalName();
+        //     $image->storeAs($destionation, $fileName);
+        //     $catagoryurl = Storage::url($image); 
+        //     $data['categoryImageUrl'] = "$catagoryurl";
+        // }
         
 
         $catagory = Catagory::create($data);
@@ -39,16 +39,16 @@ class CatagoryController extends Controller
 
     public function showAllCatagory()
     {
-        $catagory = Catagory::select('id','priority','catagory_name', 'catagory_url')->get();      
+        $catagory = Catagory::select('id','priority','categoryName', 'categoryImageUrl')->get();      
         return showResponse($catagory, 'Catagory listing successfully.');
     }
 
     public function editCatagory(Request $request, $id)
     {
         $validator = Validator::make($request->all(),[
-            'priority' => 'required',
-            'catagory_name' => 'required',
-            'catagory_url' => 'required|file|mimes:jpeg,png,jpg,gif', 
+            'priority' => 'required|numeric',
+            'categoryName' => 'required',
+            'categoryImageUrl' => 'required', 
         ]);
         try {
 
@@ -58,14 +58,14 @@ class CatagoryController extends Controller
         
     
             $data = $request->all();
-            if($image = $request->file('catagory_url'))
-            {
-                $destionation = "Catagory/image";
-                $fileName = date('YmdHis').'.'.$image->getClientOriginalName();
-                $image->storeAs($destionation, $fileName);
-                $catagoryurl = Storage::url($image); 
-                $data['catagory_url'] = "$catagoryurl";
-            }
+            // if($image = $request->file('categoryImageUrl'))
+            // {
+            //     $destionation = "Catagory/image";
+            //     $fileName = date('YmdHis').'.'.$image->getClientOriginalName();
+            //     $image->storeAs($destionation, $fileName);
+            //     $catagoryurl = Storage::url($image); 
+            //     $data['categoryImageUrl'] = "$catagoryurl";
+            // }
            
             $catagory = Catagory::where('id', $id)->update($data);            
             return sendResponse($data, 'Catagory updated successfully.');

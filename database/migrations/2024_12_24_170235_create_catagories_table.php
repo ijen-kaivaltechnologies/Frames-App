@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('catagories', function (Blueprint $table) {
             $table->id();
-            $table->string('priority');
-            $table->string('catagory_name');
-            $table->string('catagory_url');
+            $table->integer('priority');
+            $table->string('categoryName');
+            $table->string('categoryImageUrl');
             $table->timestamps();
         });
     }

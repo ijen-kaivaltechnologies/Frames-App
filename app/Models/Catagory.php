@@ -10,8 +10,8 @@ class Catagory extends Model
 
     protected $fillable = [
         'priority',
-        'catagory_name',
-        'catagory_url',
+        'categoryName',
+        'categoryImageUrl',
     ];
 
 

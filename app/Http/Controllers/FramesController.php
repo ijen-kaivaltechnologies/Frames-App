@@ -23,14 +23,14 @@ class FramesController extends Controller
         }
 
         $data = $request->all();
-        if($image = $request->file('image_url'))
-        {
-            $destionation = "Frame/image";
-            $fileName = date('YmdHis').'.'.$image->getClientOriginalName();
-            $image->storeAs($destionation, $fileName);
-            $catagoryurl = Storage::url($image); 
-            $data['image_url'] = "$catagoryurl";
-        }
+        // if($image = $request->file('image_url'))
+        // {
+        //     $destionation = "Frame/image";
+        //     $fileName = date('YmdHis').'.'.$image->getClientOriginalName();
+        //     $image->storeAs($destionation, $fileName);
+        //     $catagoryurl = Storage::url($image); 
+        //     $data['image_url'] = "$catagoryurl";
+        // }
         $frame = Frames::create($data);
         return sendResponse($frame, 'Frame created successfully.');
     }
@@ -85,14 +85,14 @@ class FramesController extends Controller
         }
 
         $data = $request->all();
-        if($image = $request->file('image_url'))
-        {
-            $destionation = "Frame/image";
-            $fileName = date('YmdHis').'.'.$image->getClientOriginalName();
-            $image->storeAs($destionation, $fileName);
-            $catagoryurl = Storage::url($image); 
-            $data['image_url'] = "$catagoryurl";
-        }
+        // if($image = $request->file('image_url'))
+        // {
+        //     $destionation = "Frame/image";
+        //     $fileName = date('YmdHis').'.'.$image->getClientOriginalName();
+        //     $image->storeAs($destionation, $fileName);
+        //     $catagoryurl = Storage::url($image); 
+        //     $data['image_url'] = "$catagoryurl";
+        // }
         $frame = Frames::where('id', $request->id)->update($data);
         return sendResponse($frame, 'Frame updated successfully.');
     }
